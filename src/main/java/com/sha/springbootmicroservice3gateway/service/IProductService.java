@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface IProductService
 {
-    JsonElement saveProduct(JsonElement requestBody);
+    List<JsonElement> saveProduct(List<JsonElement> requestBody);
 
     void deleteProduct(Long productId);
 

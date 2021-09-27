@@ -14,7 +14,7 @@ import java.util.List;
 public interface IProductServiceRequest
 {
     @POST("/api/product")
-    Call<JsonElement> saveProduct(@Body JsonElement requestBody);
+    Call<List<JsonElement>> saveProduct(@Body List<JsonElement> requestBody);
 
     @DELETE("/api/product/{productId}")
     Call<Void> deleteProduct(@Path("productId") Long productId);

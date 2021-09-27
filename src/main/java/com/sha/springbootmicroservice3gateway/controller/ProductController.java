@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author sa
  * @date 18.04.2021
@@ -20,7 +22,7 @@ public class ProductController
     private IProductService productService;
 
     @PostMapping
-    public ResponseEntity<?> saveProduct(@RequestBody JsonElement product)
+    public ResponseEntity<?> saveProduct(@RequestBody List<JsonElement> product)
     {
         return ResponseEntity.ok(productService.saveProduct(product));
     }
