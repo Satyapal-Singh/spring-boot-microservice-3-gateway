@@ -7,11 +7,6 @@ import retrofit2.Response;
 
 import java.io.IOException;
 
-/**
- * @author sa
- * @date 18.04.2021
- * @time 14:12
- */
 @Slf4j
 public class RetrofitUtils
 {

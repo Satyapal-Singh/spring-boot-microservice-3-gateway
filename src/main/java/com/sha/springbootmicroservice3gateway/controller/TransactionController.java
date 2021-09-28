@@ -9,11 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * @author sa
- * @date 18.04.2021
- * @time 14:32
- */
 @RestController
 @RequestMapping("gateway/transaction")
 public class TransactionController

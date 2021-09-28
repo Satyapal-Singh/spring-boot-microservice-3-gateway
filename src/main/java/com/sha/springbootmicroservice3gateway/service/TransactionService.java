@@ -8,11 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @author sa
- * @date 18.04.2021
- * @time 14:27
- */
 @Service
 public class TransactionService implements ITransactionService
 {

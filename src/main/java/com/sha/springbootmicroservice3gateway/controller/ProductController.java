@@ -9,11 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * @author sa
- * @date 18.04.2021
- * @time 14:17
- */
 @RestController
 @RequestMapping("gateway/product")
 public class ProductController

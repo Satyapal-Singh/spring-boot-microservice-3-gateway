@@ -11,11 +11,6 @@ import retrofit2.Response;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * @author sa
- * @date 18.04.2021
- * @time 14:08
- */
 @Slf4j
 @Service
 public class ProductService implements IProductService

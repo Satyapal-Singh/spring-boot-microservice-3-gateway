@@ -2,6 +2,9 @@ plugins {
 	id 'org.springframework.boot' version '2.4.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id "io.swagger.core.v3.swagger-gradle-plugin" version "2.1.10"
+	id("com.github.johnrengelman.processes") version "0.5.0"
+	id("org.springdoc.openapi-gradle-plugin") version "1.3.1"
 }
 
 group = 'com.sha'
@@ -27,6 +30,7 @@ dependencies {
     implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.9.0'
     implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.9.0'
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.5.10'
 
 
     //Prior to the JJWT version 0.10.0, both the API and the implementation were packaged as a single artifact, io.jsonwebtoken:jjwt.

@@ -5,11 +5,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-/**
- * @author sa
- * @date 18.04.2021
- * @time 12:02
- */
 @Data
 @Entity
 @Table(name = "users")//user is a reserved word and it's usually not a good idea use reserved words for identifiers
