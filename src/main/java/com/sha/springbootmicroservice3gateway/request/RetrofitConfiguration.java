@@ -11,11 +11,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author sa
- * @date 18.04.2021
- * @time 13:53
- */
 @Configuration
 public class RetrofitConfiguration
 {
