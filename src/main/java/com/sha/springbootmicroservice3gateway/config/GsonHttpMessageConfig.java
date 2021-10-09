@@ -5,15 +5,11 @@ import org.apache.tomcat.jni.Local;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
+import springfox.documentation.spring.web.json.Json;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- * @author sa
- * @date 18.04.2021
- * @time 13:45
- */
 @Configuration
 public class GsonHttpMessageConfig
 {
@@ -26,7 +22,9 @@ public class GsonHttpMessageConfig
                         date == null ? null : new JsonPrimitive(date.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)))
                 .registerTypeAdapter(LocalDateTime.class,
                         (JsonDeserializer<LocalDateTime>) (json, type, context) ->
-                        LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+                        LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ISO_LOCAL_DATE_TIME))
+				.registerTypeAdapter(Json.class, new SpringfoxJsonToGsonAdapter())
+				.create();
     }
 
     @Bean
@@ -43,3 +41,10 @@ public class GsonHttpMessageConfig
         return converter;
     }
 }
+
+private static class SpringfoxJsonToGsonAdapter implements JsonSerializer<Json> {
+    @Override
+    public JsonElement serialize(Json json, Type type, JsonSerializationContext context) {
+        final JsonParser parser = new JsonParser();
+        return JsonParser.parseString(json.value());
+    }
