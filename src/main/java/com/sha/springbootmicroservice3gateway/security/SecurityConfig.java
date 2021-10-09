@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
         http.authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .antMatchers("/api/authentication/**").permitAll()//login and register pre-path
-				.antMatchers("/", "/csrf", "/v2/api-docs", "/swagger-resources/**", "/configuration/ui", "/swagger-resources", "/swagger-resources/configuration/security", "/configuration/security", "/swagger-ui.html", "/webjars/**", "/swagger-ui/**").permitAll()
+				.antMatchers("/", "/csrf", "/v3/api-docs", "/swagger-resources/**", "/configuration/ui", "/swagger-resources", "/swagger-resources/configuration/security", "/configuration/security", "/swagger-ui.html", "/webjars/**", "/swagger-ui/**").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
