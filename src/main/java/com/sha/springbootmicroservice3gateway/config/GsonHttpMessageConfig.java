@@ -4,11 +4,14 @@ import com.google.gson.*;
 import org.apache.tomcat.jni.Local;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
-import springfox.documentation.spring.web.json.Json;
 
+import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Configuration
 public class GsonHttpMessageConfig
@@ -22,9 +25,7 @@ public class GsonHttpMessageConfig
                         date == null ? null : new JsonPrimitive(date.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)))
                 .registerTypeAdapter(LocalDateTime.class,
                         (JsonDeserializer<LocalDateTime>) (json, type, context) ->
-                        LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ISO_LOCAL_DATE_TIME))
-				.registerTypeAdapter(Json.class, new SpringfoxJsonToGsonAdapter())
-				.create();
+                        LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ISO_LOCAL_DATE_TIME));
     }
 
     @Bean
@@ -34,17 +35,20 @@ public class GsonHttpMessageConfig
     }
 
     @Bean
+    public StringHttpMessageConverter stringHttpMessageConverter()
+    {
+        StringHttpMessageConverter messageConverter = new StringHttpMessageConverter();
+        messageConverter.setSupportedMediaTypes(List.of(MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN, MediaType.ALL));
+        return messageConverter;
+    }
+
+    @Bean
     public GsonHttpMessageConverter gsonHttpMessageConverter(Gson gson)
     {
         GsonHttpMessageConverter converter = new GsonHttpMessageConverter();
         converter.setGson(gson);
         return converter;
     }
-}
 
-private static class SpringfoxJsonToGsonAdapter implements JsonSerializer<Json> {
-    @Override
-    public JsonElement serialize(Json json, Type type, JsonSerializationContext context) {
-        final JsonParser parser = new JsonParser();
-        return JsonParser.parseString(json.value());
-    }
+
+}
