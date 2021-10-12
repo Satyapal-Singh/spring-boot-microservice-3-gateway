@@ -5,6 +5,7 @@ import retrofit2.Call;
 import retrofit2.http.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IProductServiceRequest
 {
@@ -16,4 +17,7 @@ public interface IProductServiceRequest
 
     @GET("/api/product")
     Call<List<JsonElement>> getAllProducts();
+
+    @GET("/api/product/{productId}")
+    Call<Optional<JsonElement>> findById(@Path("productId") Long productId);
 }

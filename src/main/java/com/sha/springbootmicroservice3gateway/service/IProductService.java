@@ -1,8 +1,10 @@
 package com.sha.springbootmicroservice3gateway.service;
 
 import com.google.gson.JsonElement;
+import retrofit2.Call;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IProductService
 {
@@ -11,4 +13,6 @@ public interface IProductService
     void deleteProduct(Long productId);
 
     List<JsonElement> getAllProducts();
+
+    Call<Optional<JsonElement>> showProductById(Long productId);
 }
