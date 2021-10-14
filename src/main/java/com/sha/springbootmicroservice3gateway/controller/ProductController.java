@@ -38,6 +38,6 @@ public class ProductController
     @GetMapping("{productId}")
     public ResponseEntity<?> showProductById(@PathVariable Long productId)
     {
-        return ResponseEntity.ok(productService.showProductById(productId));
+        return ResponseEntity.ok(productService.getProductById(productId));
     }
 }

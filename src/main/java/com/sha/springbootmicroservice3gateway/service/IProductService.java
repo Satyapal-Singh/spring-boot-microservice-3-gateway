@@ -14,5 +14,5 @@ public interface IProductService
 
     List<JsonElement> getAllProducts();
 
-    Optional<JsonElement> showProductById(Long productId);
+    Optional<JsonElement> getProductById(Long productId);
 }
