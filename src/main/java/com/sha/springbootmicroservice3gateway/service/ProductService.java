@@ -37,8 +37,8 @@ public class ProductService implements IProductService
     }
 
     @Override
-    public Call<Optional<JsonElement>> showProductById(Long productId)
+    public Optional<JsonElement> showProductById(Long productId)
     {
-        return productServiceRequest.findById(productId);
+        return RetrofitUtils.executeInBlock(productServiceRequest.showProductById(productId));
     }
 }

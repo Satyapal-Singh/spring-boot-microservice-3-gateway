@@ -19,5 +19,5 @@ public interface IProductServiceRequest
     Call<List<JsonElement>> getAllProducts();
 
     @GET("/api/product/{productId}")
-    Call<Optional<JsonElement>> findById(@Path("productId") Long productId);
+    Call<Optional<JsonElement>> showProductById(@Path("productId") Long productId);
 }
