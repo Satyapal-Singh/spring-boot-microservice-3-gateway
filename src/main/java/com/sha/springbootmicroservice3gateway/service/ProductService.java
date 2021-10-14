@@ -41,4 +41,11 @@ public class ProductService implements IProductService
     {
         return RetrofitUtils.executeInBlock(productServiceRequest.getProductById(productId));
     }
+
+    @Override
+    public JsonElement showProductByName(String productName)
+    {
+        return RetrofitUtils.executeInBlock(productServiceRequest.showProductByName(productName));
+    }
+
 }

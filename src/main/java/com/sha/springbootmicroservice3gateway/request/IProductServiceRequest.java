@@ -20,4 +20,7 @@ public interface IProductServiceRequest
 
     @GET("/api/product/{productId}")
     Call<JsonElement> getProductById(@Path("productId") Long productId);
+
+    @GET("/api/product/getByName/{productName}")
+    Call<JsonElement> showProductByName(@Path("productName") String productName);
 }

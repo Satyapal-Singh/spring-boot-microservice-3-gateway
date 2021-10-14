@@ -15,4 +15,6 @@ public interface IProductService
     List<JsonElement> getAllProducts();
 
     JsonElement getProductById(Long productId);
+
+    JsonElement showProductByName(String productName);
 }

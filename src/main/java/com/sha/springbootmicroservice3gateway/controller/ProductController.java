@@ -40,4 +40,10 @@ public class ProductController
     {
         return ResponseEntity.ok(productService.getProductById(productId));
     }
+
+    @GetMapping("getByName/{productName}")
+    public ResponseEntity<?> showProductByName(@PathVariable String productName)
+    {
+        return ResponseEntity.ok(productService.showProductByName(productName));
+    }
 }
