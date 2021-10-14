@@ -46,4 +46,10 @@ public class ProductController
     {
         return ResponseEntity.ok(productService.showProductByName(productName));
     }
+
+    @GetMapping("getByPrice/{productPrice}")
+    public ResponseEntity<?> getProductByPrice(@PathVariable Double productPrice)
+    {
+        return ResponseEntity.ok(productService.getProductByPrice(productPrice));
+    }
 }

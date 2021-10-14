@@ -23,4 +23,7 @@ public interface IProductServiceRequest
 
     @GET("/api/product/getByName/{productName}")
     Call<JsonElement> showProductByName(@Path("productName") String productName);
+
+    @GET("/api/product/getByPrice/{productPrice}")
+    Call<JsonElement> getProductByPrice(@Path("productPrice") Double productPrice);
 }

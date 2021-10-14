@@ -48,4 +48,9 @@ public class ProductService implements IProductService
         return RetrofitUtils.executeInBlock(productServiceRequest.showProductByName(productName));
     }
 
+    @Override
+    public JsonElement getProductByPrice(Double productPrice)
+    {
+        return RetrofitUtils.executeInBlock(productServiceRequest.getProductByPrice(productPrice));
+    }
 }
