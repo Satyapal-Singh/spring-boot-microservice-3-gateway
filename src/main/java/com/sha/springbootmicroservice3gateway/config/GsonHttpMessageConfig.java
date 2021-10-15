@@ -17,16 +17,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Configuration
-public class GsonHttpMessageConfig implements WebMvcConfigurer
+public class GsonHttpMessageConfig
 {
-
-    @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> messageConverters)
-    {
-        messageConverters.add(new StringHttpMessageConverter());
-        messageConverters.add(new GsonHttpMessageConverter());
-    }
-
     @Bean
     public GsonBuilder gsonBuilder()
     {
@@ -37,9 +29,9 @@ public class GsonHttpMessageConfig implements WebMvcConfigurer
                 .registerTypeAdapter(LocalDateTime.class,
                         (JsonDeserializer<LocalDateTime>) (json, type, context) ->
                         LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ISO_LOCAL_DATE_TIME))
-                .registerTypeAdapter(String.class,
-                        (JsonSerializer<String>) (string, type, context) ->
-                        new JsonPrimitive(string));
+                .registerTypeAdapter(JsonElement.class,
+                        (JsonDeserializer<JsonElement>) (json, type, context) ->
+                        JsonParser.parseString(json.getAsString()));
     }
 
     @Bean
