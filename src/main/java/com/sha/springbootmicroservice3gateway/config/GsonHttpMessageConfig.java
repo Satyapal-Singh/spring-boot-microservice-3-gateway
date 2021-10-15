@@ -14,11 +14,22 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Configuration
-public class GsonHttpMessageConfig
+public class GsonHttpMessageConfig implements WebMvcConfigurer
 {
+    @Override
+    public void configureMessageConverters(
+            List<HttpMessageConverter<?>> converters) {
+        StringHttpMessageConverter stringConverter = new StringHttpMessageConverter();
+        stringConverter.setWriteAcceptCharset(false);
+        stringConverter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN));
+        converters.add(stringConverter);
+    }
+
     @Bean
     public GsonBuilder gsonBuilder()
     {
@@ -29,9 +40,9 @@ public class GsonHttpMessageConfig
                 .registerTypeAdapter(LocalDateTime.class,
                         (JsonDeserializer<LocalDateTime>) (json, type, context) ->
                         LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ISO_LOCAL_DATE_TIME))
-                .registerTypeAdapter(JsonElement.class,
-                        (JsonDeserializer<JsonElement>) (json, type, context) ->
-                        JsonParser.parseString(json.getAsString()));
+                .registerTypeAdapter(String.class,
+                        (JsonSerializer<String>) (json, type, context) ->
+                        new JsonPrimitive(json));
     }
 
     @Bean
@@ -39,6 +50,7 @@ public class GsonHttpMessageConfig
     {
         return gsonBuilder.create();
     }
+
 
     @Bean
     public GsonHttpMessageConverter gsonHttpMessageConverter(Gson gson)
