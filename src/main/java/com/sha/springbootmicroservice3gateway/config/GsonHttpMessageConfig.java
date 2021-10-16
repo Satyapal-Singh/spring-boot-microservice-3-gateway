@@ -19,17 +19,8 @@ import java.util.Collections;
 import java.util.List;
 
 @Configuration
-public class GsonHttpMessageConfig implements WebMvcConfigurer
+public class GsonHttpMessageConfig
 {
-    @Override
-    public void configureMessageConverters(
-            List<HttpMessageConverter<?>> converters) {
-        StringHttpMessageConverter stringConverter = new StringHttpMessageConverter();
-        stringConverter.setWriteAcceptCharset(false);
-        stringConverter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN));
-        converters.add(stringConverter);
-    }
-
     @Bean
     public GsonBuilder gsonBuilder()
     {
@@ -39,10 +30,7 @@ public class GsonHttpMessageConfig implements WebMvcConfigurer
                         date == null ? null : new JsonPrimitive(date.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)))
                 .registerTypeAdapter(LocalDateTime.class,
                         (JsonDeserializer<LocalDateTime>) (json, type, context) ->
-                        LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ISO_LOCAL_DATE_TIME))
-                .registerTypeAdapter(String.class,
-                        (JsonSerializer<String>) (json, type, context) ->
-                        new JsonPrimitive(json));
+                        LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ISO_LOCAL_DATE_TIME));
     }
 
     @Bean
