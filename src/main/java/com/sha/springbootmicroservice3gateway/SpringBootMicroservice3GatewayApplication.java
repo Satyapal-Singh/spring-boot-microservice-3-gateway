@@ -11,9 +11,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @SpringBootApplication
 @PropertySource("classpath:application-${spring.profiles.active:default}.properties")
 public class SpringBootMicroservice3GatewayApplication {
+	public static final String AUTHORIZATION_HEADER = "Authorization";
+	public static final String DEFAULT_INCLUDE_PATTERN = "/api/.*";
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootMicroservice3GatewayApplication.class, args);
 	}
 
 }
+

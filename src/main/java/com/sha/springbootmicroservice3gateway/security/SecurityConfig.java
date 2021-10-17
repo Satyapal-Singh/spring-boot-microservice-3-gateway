@@ -1,5 +1,6 @@
 package com.sha.springbootmicroservice3gateway.security;
 
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,9 +17,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 
 @Configuration
 @EnableWebSecurity
+@SecurityScheme(
+        name = "bearerAuth",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        scheme = "bearer"
+)
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
     @Autowired
