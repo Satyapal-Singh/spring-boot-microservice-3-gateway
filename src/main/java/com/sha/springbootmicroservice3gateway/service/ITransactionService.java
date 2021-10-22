@@ -17,5 +17,5 @@ public interface ITransactionService
 
     List<JsonElement> getAllTransactionsOfUser(Long userId);
 	
-	List<JsonElement> getAllTransactions();
+	List<JsonElement> getTransactions();
 }
