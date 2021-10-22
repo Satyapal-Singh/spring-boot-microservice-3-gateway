@@ -17,6 +17,6 @@ public interface ITransactionServiceRequest
     @GET("/api/transaction/{userId}")
     Call<List<JsonElement>> getAllTransactionsOfAuthorizedUser(@Path("userId") Long userId);
 	
-	@GET
+	@GET("/api/transaction")
 	Call<List<JsonElement>> getAllTransactions();
 }
