@@ -41,6 +41,6 @@ public class TransactionController
 	@GetMapping
 	public ResponseEntity<?> getAllTransactions()
 	{
-		return ResponseEntity.ok(transactionService.getAllTransactions();
+		return ResponseEntity.ok(transactionService.getAllTransactions());
 	}
 }
