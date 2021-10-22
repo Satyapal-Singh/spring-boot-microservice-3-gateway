@@ -38,8 +38,8 @@ public class TransactionController
         return ResponseEntity.ok(transactionService.getAllTransactionsOfUser(principal.getId()));
     }
 	
-	@GetMapping
-	public ResponseEntity<?> getAllTransactions()
+	@GetMapping("all")
+	public ResponseEntity<?> getAllTransactionsofAllUsers()
 	{
 		return ResponseEntity.ok(transactionService.getTransactions());
 	}
