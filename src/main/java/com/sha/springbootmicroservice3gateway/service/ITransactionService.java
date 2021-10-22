@@ -16,4 +16,6 @@ public interface ITransactionService
     void deleteTransaction(Long transactionId);
 
     List<JsonElement> getAllTransactionsOfUser(Long userId);
+	
+	List<JsonElement> getAllTransactions();
 }

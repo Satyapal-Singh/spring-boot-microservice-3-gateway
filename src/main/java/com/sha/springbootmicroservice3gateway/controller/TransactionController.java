@@ -13,12 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("gateway/transaction")
-@SecurityScheme(
-        name = "bearerAuth",
-        type = SecuritySchemeType.HTTP,
-        bearerFormat = "JWT",
-        scheme = "bearer"
-)
 public class TransactionController
 {
     @Autowired
@@ -43,4 +37,10 @@ public class TransactionController
     {
         return ResponseEntity.ok(transactionService.getAllTransactionsOfUser(principal.getId()));
     }
+	
+	@GetMapping
+	public ResponseEntity<?> getAllTransactions()
+	{
+		return ResponseEntity.ok(transactionService.getAllTransactions();
+	}
 }

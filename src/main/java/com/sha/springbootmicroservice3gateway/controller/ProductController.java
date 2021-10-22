@@ -13,12 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("gateway/product")
-@SecurityScheme(
-        name = "bearerAuth",
-        type = SecuritySchemeType.HTTP,
-        bearerFormat = "JWT",
-        scheme = "bearer"
-)
 public class ProductController
 {
     @Autowired

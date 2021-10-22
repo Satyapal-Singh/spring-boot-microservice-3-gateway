@@ -31,4 +31,10 @@ public class TransactionService implements ITransactionService
     {
         return RetrofitUtils.executeInBlock(transactionServiceRequest.getAllTransactionsOfAuthorizedUser(userId));
     }
+	
+	@Override
+	public List<JsonElement> getAllTransactions()
+	{
+		return RetrofitUtils.executeInBlock(transactionServiceRequest.getAllTransactions());
+	}
 }
